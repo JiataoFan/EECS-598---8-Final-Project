@@ -1,0 +1,765 @@
+/*
+Author: Jiatao Fan
+*/
+
+body {
+
+	font-family: Helvetica;
+
+}
+
+#header {
+
+	margin-top: 50px;
+	margin-bottom: 30px;
+	text-align: center;
+
+	color: #4a4a4a;
+	font-size: 36px;
+	font-weight: bold;
+
+}
+
+#text {
+
+	margin-left: 10%;
+	margin-right: 10%;
+
+	text-align: justify;
+	color: #4a4a4a;
+	font-size: 14px;
+
+}
+
+#wordSelectorWrapper {
+
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+
+	width: 300px;
+	height: 36px;
+
+	border-radius: 3px;
+
+	background: -webkit-linear-gradient(#f2f2f2, #d4d4d4); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#f2f2f2, #d4d4d4); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#f2f2f2, #d4d4d4); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#f2f2f2, #d4d4d4); /* Standard syntax */
+
+}
+
+#wordSelector {
+
+	appearance: none;
+	-webkit-appearance: none;  /*Removes default chrome and safari style*/
+    -moz-appearance: none;
+	 
+	width: 300px;
+	height: 36px;
+
+	padding-bottom: 2px;
+	padding-left: 10px;
+
+	color: #4a4a4a;
+	font-size: 16px;
+
+	border-style: solid;
+	border-color: #979797;
+	border-width: 1px;
+	border-radius: 3px;
+	
+	background: url(arrow.png) no-repeat right;  *//*Adds background-image*/
+
+}
+
+.wordSelectorOptions {
+	
+	padding-left: 12px;
+
+}
+
+#defaultMapView {
+	
+	display: initial;
+	
+}
+
+#defaultMap {
+
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+#defaultMapStates {
+
+  	width:600px; /*width and font size must match*/
+	height: 450px;
+  	font-size:600px;
+  	color: #d4d4d4;
+	background-color: white;
+
+}
+
+
+
+#correlationAndComparisonView {
+
+	display: none;
+	text-align: center;
+	
+}
+
+#buttonsWrapper {
+	
+	margin-top: 50px;
+	width: 920px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50px;
+	
+}
+
+.blankCellButtonsWrapper {
+	
+	width: 100px;
+
+	
+}
+
+.buttons {
+
+	padding: 6px 20px 6px 20px;
+	width: 240px;
+	
+	color: #4a4a4a;
+	font-size: 15px;
+	text-align: center;
+	border-radius: 8px;
+	border-style: solid;
+	border-width: 1px;
+	
+	cursor:pointer;
+	
+	-webkit-box-shadow: 0px 1px 1px 1px #dcdcdc;
+	-moz-box-shadow: 0px 1px 1px 1px #dcdcdc;
+	box-shadow: 0px 1px 1px 1px #dcdcdc;
+	
+	transition: all 0.3s ease-out;
+
+}
+
+#mostCorrelatedWordClassesButton {
+
+	border-color: #ffa00e;
+
+}
+
+#mostCorrelatedWordClassesButton:hover {
+
+	background: #fcf0d3;
+
+}
+
+#leastCorrelatedWordClassesButton {
+
+	margin-left: 80px;
+	border-color: #ffa00e;
+
+}
+
+#leastCorrelatedWordClassesButton:hover {
+
+	background: #fcf0d3;
+
+}
+
+#compareButton {
+
+	width: 240px;
+	
+	margin-left: 80px;
+	font-size: 15px;
+	border-style: solid;
+	border-radius: 8px;
+	border-color: #0a8fe0;
+	border-width: 1px;
+
+	text-align: center;
+	
+	-webkit-box-shadow: 0px 1px 1px 1px #dcdcdc;
+	-moz-box-shadow: 0px 1px 1px 1px #dcdcdc;
+	box-shadow: 0px 1px 1px 1px #dcdcdc;
+	
+	transition: all 0.3s ease-out;
+
+}
+
+#compareButton:hover {
+
+	background: #85ccf5;
+
+}
+
+#compareButtonLink {
+
+	display: block;
+	width: 240px;
+	height: 17px;
+	border-radius: 8px;
+	color: #4a4a4a;
+	text-decoration: none;
+
+}
+
+#primaryWordWrapper {
+
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+#primaryWord {
+	
+	font-size: 24px;
+	text-align: center;;
+
+}
+
+#frequencyMap {
+
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+#frequencyMapStates {
+
+  	width:600px; /*width and font size must match*/
+	height: 450px;
+  	font-size: 600px;
+  	color: #d4d4d4;
+	background-color: white;
+	margin-bottom: 50px;
+
+}
+
+#correlatedWordClassesMapsWrapper {
+
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.correlatedWordTables {
+
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.correlatedWords {
+	
+	text-align: center;
+	font-size: 24px;
+	
+}
+
+.correlatedWordCorrelations {
+
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	font-size: 16px;
+
+}
+
+.correlatedWordCorrelationValues {
+
+	font-weight: bold;
+
+}
+
+.correlationBarsCells{
+
+	text-align: center;
+	
+}
+
+.correlationBars {
+
+	-moz-appearance:none;
+	width: 250px;
+	height: 15px;
+
+	margin-bottom: 20px;
+	border-radius: 100px;
+	border-width:2px;
+	border:none;
+	
+	background-color: #e6e6e6;
+
+}
+
+.correlationBars::-webkit-progress-bar {
+
+    background-color: white;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 100px;
+	border-color: #dcdcdc;
+
+}
+
+.correlationBars::-webkit-progress-value {
+
+	border-radius: 100px;
+	
+}
+
+.correlationBars::-moz-progress-bar {
+
+	border-radius: 100px;
+
+}
+
+#mostCorrelatedWord1CorrelationBar::-webkit-progress-value {
+
+	background-color: #aceb83;
+	
+}
+
+#mostCorrelatedWord1CorrelationBar::-moz-progress-bar {
+
+	background-color: #aceb83;
+
+}
+
+#mostCorrelatedWord2CorrelationBar::-webkit-progress-value {
+
+	background-color: #0abfe0;
+	
+}
+
+#mostCorrelatedWord2CorrelationBar::-moz-progress-bar {
+
+	background-color: #0abfe0;
+
+}
+
+#mostCorrelatedWord3CorrelationBar::-webkit-progress-value {
+
+	background-color: #ffa00e;
+	
+}
+
+#mostCorrelatedWord3CorrelationBar::-moz-progress-bar {
+
+	background-color: #ffa00e;
+
+}
+
+#leastCorrelatedWord1CorrelationBar::-webkit-progress-value {
+
+	background-color: #aceb83;
+	
+}
+
+#leastCorrelatedWord1CorrelationBar::-moz-progress-bar {
+
+	background-color: #aceb83;
+
+}
+
+#leastCorrelatedWord2CorrelationBar::-webkit-progress-value {
+
+	background-color: #0abfe0;
+	
+}
+
+#leastCorrelatedWord2CorrelationBar::-moz-progress-bar {
+
+	background-color: #0abfe0;
+
+}
+
+#leastCorrelatedWord3CorrelationBar::-webkit-progress-value {
+
+	background-color: #ffa00e;
+	
+}
+
+#leastCorrelatedWord3CorrelationBar::-moz-progress-bar {
+
+	background-color: #ffa00e;
+
+}
+
+
+#mostCorrelatedWordClassesMaps {
+	
+	width: 80%;
+	display: none;
+	
+}
+
+#mostCorrelatedMap1 {
+
+	text-align: center;
+
+}
+
+#mostCorrelatedMap1States {
+
+  	width: 350px; /*width and font size must match*/
+	height: 265px;
+  	font-size: 350px;
+  	color: #d4d4d4;
+	background-color: white;
+
+}
+
+#mostCorrelatedMap2 {
+
+	text-align: center;
+
+}
+
+#mostCorrelatedMap2States {
+
+  	width: 350px; /*width and font size must match*/
+	height: 265px;
+  	font-size: 350px;
+  	color: #d4d4d4;
+	background-color: white;
+
+}
+
+#mostCorrelatedMap3 {
+
+	text-align: center;
+
+}
+
+#mostCorrelatedMap3States {
+
+  	width: 350px; /*width and font size must match*/
+	height: 265px;
+  	font-size: 350px;
+  	color: #d4d4d4;
+	background-color: white;
+
+}
+
+#leastCorrelatedWordClassesMaps {
+	
+	width: 80%;
+	display: none;
+	
+}
+
+#leastCorrelatedMap1 {
+
+	text-align: center;
+
+}
+
+#leastCorrelatedMap1States {
+
+  	width: 350px; /*width and font size must match*/
+	height: 265px;
+  	font-size: 350px;
+  	color: #d4d4d4;
+	background-color: white;
+
+}
+
+#leastCorrelatedMap2 {
+
+	text-align: center;
+
+}
+
+#leastCorrelatedMap2States {
+
+  	width: 350px; /*width and font size must match*/
+	height: 265px;
+  	font-size: 350px;
+  	color: #d4d4d4;
+	background-color: white;
+
+}
+
+#leastCorrelatedMap3 {
+
+	text-align: center;
+
+}
+
+#leastCorrelatedMap3States {
+
+  	width: 350px; /*width and font size must match*/
+	height: 265px;
+  	font-size: 350px;
+  	color: #d4d4d4;
+	background-color: white;
+
+}
+
+#comparisonView {
+	
+	text-align: center;
+
+	display: none;
+
+}
+
+#comparisonCorrelation {
+
+	font-size: 20px;
+
+}
+
+#comparisonCorrelationValues {
+
+	font-weight: bold;
+
+}
+
+#comparisonCorrelationBar {
+
+	-moz-appearance:none;
+	width: 300px;
+	height: 15px;
+
+	margin-top: 10px;
+	border-radius: 100px;
+	border-width:2px;
+	border:none;
+	
+	background-color: #e6e6e6;
+
+}
+
+#comparisonCorrelationBar::-webkit-progress-bar {
+
+    background-color: white;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 100px;
+	border-color: #dcdcdc;
+
+}
+
+#comparisonCorrelationBar::-webkit-progress-value {
+
+	border-radius: 100px;
+	background-color: #aceb83;
+	
+}
+
+#comparisonCorrelationBar::-moz-progress-bar {
+
+	border-radius: 100px;
+	background-color: #aceb83;
+
+}
+
+#comparisonMaps {
+
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	margin-top: 50px;
+
+}
+
+.comparisonWords {
+
+	padding-bottom: 10px;
+	font-size: 24px;
+	
+}
+
+#comparisonMap1 {
+
+	text-align: center;
+
+}
+
+#comparisonMap1States {
+
+  	width: 600px; /*width and font size must match*/
+	height: 450px;
+  	font-size: 600px;
+  	color: #d4d4d4;
+	background-color: white;
+
+}
+
+#comparisonMap2 {
+
+	text-align: center;
+
+}
+
+#comparisonMap2States {
+
+  	width: 600px; /*width and font size must match*/
+	height: 450px;
+  	font-size: 600px;
+  	color: #d4d4d4;
+	background-color: white;
+
+}
+
+
+
+.overlay {
+
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.7);
+	transition: opacity 500ms;
+	visibility: hidden;
+	opacity: 0;
+
+}
+
+.overlay:target {
+
+	visibility: visible;
+	opacity: 1;
+
+}
+
+#popupWindow {
+
+	width: 500px;
+	height: 280px;
+	margin: 200px auto;
+	background: #fff;
+	border-radius: 5px;
+	position: relative;
+	transition: all 5s ease-in-out;
+	text-align: center;
+
+}
+
+#popupHeader {
+
+	padding-top: 30px;
+	color: #4a4a4a;
+	
+	font-size: 20px;
+	font-weight: bold;
+	
+	text-shadow: 0px 0px 1px #dcdcdc;
+
+}
+
+#popupButtonsWrapper {
+	
+	margin: 50px auto;
+	
+}
+
+
+.popupButtons {
+
+	width: 145px;
+	height: 36px;
+	font-size: 18px;
+	border-style: solid;
+	border-radius: 8px;
+	border-color: #979797;
+	border-width: 1px;
+
+	text-align: center;
+	
+	-webkit-box-shadow: 0px 1px 1px 1px #dcdcdc;
+	-moz-box-shadow: 0px 1px 1px 1px #dcdcdc;
+	box-shadow: 0px 1px 1px 1px #dcdcdc;
+
+	transition: all 0.3s ease-out;
+	
+	background: -webkit-linear-gradient(#f2f2f2, #d4d4d4); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#f2f2f2, #d4d4d4); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#f2f2f2, #d4d4d4); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#f2f2f2, #d4d4d4); /* Standard syntax */
+
+}
+
+.popupButtons:hover {
+
+	font-weight: bold;
+	background: -webkit-linear-gradient(#d8d8d8, #b3b3b3); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#d8d8d8, #b3b3b3); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#d8d8d8, #b3b3b3); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#d8d8d8, #b3b3b3); /* Standard syntax */
+
+}
+
+.popupButtonLinks {
+
+	display: block;
+	width: 145px;
+	height: 18px;
+	border-radius: 8px;
+	color: #4a4a4a;
+	text-decoration: none;
+
+}
+
+.popupBlankCellWrapper {
+	
+	width: 30px;
+	
+}
+
+#popupWordSelectorWrapper {
+
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;
+
+	width: 300px;
+	height: 36px;
+
+	border-radius: 3px;
+
+	background: -webkit-linear-gradient(#f2f2f2, #d4d4d4); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#f2f2f2, #d4d4d4); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#f2f2f2, #d4d4d4); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#f2f2f2, #d4d4d4); /* Standard syntax */
+
+}
+
+#popupWordSelector {
+
+	appearance: none;
+	-webkit-appearance: none;  /*Removes default chrome and safari style*/
+    -moz-appearance: none;
+	 
+	width: 300px;
+	height: 36px;
+
+	padding-bottom: 2px;
+	padding-left: 10px;
+
+	color: #4a4a4a;
+	font-size: 16px;
+
+	border-style: solid;
+	border-color: #979797;
+	border-width: 1px;
+	border-radius: 3px;
+	
+	background: url(arrow.png) no-repeat right;  *//*Adds background-image*/
+
+}

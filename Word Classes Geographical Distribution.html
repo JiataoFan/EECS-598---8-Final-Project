@@ -1,0 +1,681 @@
+<!-- Author: Jiatao Fan-->
+
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html" charset= "utf-8">
+	<title>Word Classes Geographical Distribution</title>	
+	<script type="text/javascript" src="Word Classes Geographical Distribution Files/myScript.js"></script>
+	<script type="text/javascript" src="Word Classes Geographical Distribution Files/d3.js"></script>
+	<link rel="stylesheet" type="text/css" href="Word Classes Geographical Distribution Files/styleSheet.css">
+	<link rel="stylesheet" href="stately-master/assets/css/stately.css">
+
+</head>
+<body>
+
+	<script type="text/javascript">
+
+	/*set up page here*/
+
+	</script>
+
+	<div id = "header">Word Classes Geographical Distribution</div>
+
+	<div id = "text">
+
+		Loerem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque urna non ante maximus tristique. 
+		Nullam id velit quis ligula feugiat elementum. Nulla dignissim quis purus aliquam auctor. Proin ac dui ac est accumsan malesuada.
+		Ut orci eros, vehicula quis libero ac, lacinia pulvinar elit. Phasellus et ullamcorper neque. Ut quis laoreet enim,
+		vitae pharetra justo. Sed a velit non libero pharetra gravida.
+
+		Nulla hendrerit nulla semper lorem feugiat suscipit. Donec aliquet, purus at aliquam pellentesque, velit lectus elementum purus,
+		id porta massa neque scelerisque nisi. Nunc vitae risus sollicitudin, auctor odio non, gravida urna. Praesent aliquam quis diam 
+		tempor ultrices. Vivamus justo justo, mattis eget diam ac, posuere mollis nulla. Suspendisse tincidunt vel lacus eget tincidunt.
+		Mauris tristique felis sed est condimentum, nec venenatis enim scelerisque. Aenean ac ante massa. In mollis ornare feugiat.
+		Vestibulum et lobortis lectus, non vestibulum velit. Proin sed ante massa. In eu sollicitudin felis. Nulla nisl lacus, fringilla
+		id lectus vel, consectetur mollis purus. Quisque a est sed eros scelerisque maximus. Lorem ipsum dolor sit amet, consectetur
+		adipiscing elit.
+
+	</div>
+
+	<div id = "wordSelectorWrapper">
+
+		<select id = "wordSelector" onchange = "selectPrimaryWord(this);">
+
+				<script>
+
+					wordSelectorOptions = document.getElementById("wordSelector");
+					for (var i = 0; i < words.length; i++) {
+
+						if (i == 0) {
+
+							wordSelectorOptions.innerHTML += '<OPTION class = "wordSelectorOptions" selected = "selected" value="' + words[i] + '">' + words[i];
+
+						} else {
+
+							wordSelectorOptions.innerHTML += '<OPTION class = "wordSelectorOptions" value="' + words[i] + '">' + words[i];
+
+						}
+						
+					}
+				</script>
+		
+		</select>
+	
+	</div>
+	
+	<div id = "defaultMapView">
+	
+		<div id = "defaultMap">
+
+			<ul id = "defaultMapStates" class="stately">
+			
+				<script>
+
+					defaultMapStates = document.getElementById("defaultMapStates");
+					for (var i = 0; i < states.length; i++) {
+
+						defaultMapStates.innerHTML += '<li data-state = "' + states[i].data_state 
+						+ '" id = "defaultMap' + states[i].id + '">' + states[i].value + "</li>";
+
+					}
+
+				</script>
+
+			</ul>
+
+		</div>
+	
+	</div>
+
+	<div id = "correlationAndComparisonView">
+	
+		<table id = "buttonsWrapper">
+
+			<tr>
+				
+				<td id = "mostCorrelatedWordClassesButton" class = "buttons" onclick = "displayMostCorrelatedWordClassesMaps()"> Most correlated word classes </td>
+				<td class = "blankCellButtonsWrapper"></td>
+				<td id = "leastCorrelatedWordClassesButton" class = "buttons" onclick = "displayLeastCorrelatedWordClassesMaps()"> Least correlated word classes </td>
+				<td class = "blankCellButtonsWrapper"></td>
+				<td id = "compareButton">
+						<a 	id = "compareButtonLink" href="#popup"> Compare </a>
+				</td>
+				
+			</tr>
+
+		</table>
+		
+		<div "primaryWordWrapper">
+
+			<div id = "primaryWord">
+
+				Family
+
+			</div>
+
+		</div>
+	
+		<div id = "frequencyMap">
+
+			<ul id = "frequencyMapStates" class="stately">
+			
+				<script>
+
+					frequencyMapStates = document.getElementById("frequencyMapStates");
+					for (var i = 0; i < states.length; i++) {
+
+							frequencyMapStates.innerHTML += '<li data-state = "' + states[i].data_state 
+							+ '" id = "frequencyMap' + states[i].id + '">' + states[i].value + "</li>";
+
+					}
+
+				</script>
+
+			</ul>
+	
+		</div>
+		
+		<div id = "correlatedWordClassesMapsWrapper">
+
+			<table id = "mostCorrelatedWordClassesMaps">
+
+				<tr>
+				
+					<td>
+
+						<table class = "correlatedWordTables">
+
+							<tr>
+							
+								<td id = "mostCorrelatedWord1" class = "correlatedWords">
+								
+									FriendShip
+								
+								</td>
+								
+							</tr>
+							
+							<tr>
+								
+								<td id = "mostCorrelatedWord1Correlation" class = "correlatedWordCorrelations">
+								
+									<label>Correlation:</label>
+									<label class = "correlatedWordCorrelationValues">0.9</label>
+								
+								</td>
+								
+							</tr>
+							
+							<tr>
+								
+								<td class = "correlationBarsCells">
+								
+									<progress id = "mostCorrelatedWord1CorrelationBar" class = "correlationBars" value = "0.9" max = "1"></progress>
+
+								</td>
+								
+							</tr>
+							
+							<tr>
+				
+								<td id = "mostCorrelatedMap1">
+					
+									<ul id = "mostCorrelatedMap1States" class="stately">
+				
+										<script>
+
+											mostCorrelatedMap1States = document.getElementById("mostCorrelatedMap1States");
+											for (var i = 0; i < states.length; i++) {
+
+												mostCorrelatedMap1States.innerHTML += '<li data-state = "' + states[i].data_state 
+												+ '" id = "mostCorrelatedMap1' + states[i].id + '">' + states[i].value + "</li>";
+
+											}
+
+										</script>
+
+									</ul>
+					
+								</td>
+								
+							</tr>
+							
+						</table>
+
+					</td>
+					
+					<td>
+					
+						<table class = "correlatedWordTables">
+
+							<tr>
+							
+								<td id = "mostCorrelatedWord2" class = "correlatedWords">
+								
+									Love
+								
+								</td>
+								
+							</tr>
+							
+							<tr>
+
+								<td id = "mostCorrelatedWord2Correlation" class = "correlatedWordCorrelations">
+								
+									<label>Correlation:</label>
+									<label class = "correlatedWordCorrelationValues">0.7</label>
+
+								</td>
+
+							</tr>
+							
+							<tr>
+
+								<td class = "correlationBarsCells">
+								
+									<progress id = "mostCorrelatedWord2CorrelationBar" class = "correlationBars" value = "0.7" max = "1"></progress>
+
+								</td>
+
+							</tr>
+							
+							<tr>
+					
+								<td id = "mostCorrelatedMap2">
+
+									<ul id = "mostCorrelatedMap2States" class="stately">
+				
+										<script>
+
+											mostCorrelatedMap2States = document.getElementById("mostCorrelatedMap2States");
+											for (var i = 0; i < states.length; i++) {
+
+												mostCorrelatedMap2States.innerHTML += '<li data-state = "' + states[i].data_state 
+												+ '" id = "mostCorrelatedMap2' + states[i].id + '">' + states[i].value + "</li>";
+
+											}
+
+										</script>
+
+									</ul>
+					
+								</td>
+								
+							</tr>
+							
+						</table>
+					
+					</td>
+
+					<td>
+					
+						<table class = "correlatedWordTables">
+
+							<tr>
+							
+								<td id = "mostCorrelatedWord3" class = "correlatedWords">
+								
+									Help
+								
+								</td>
+								
+							</tr>
+							
+							<tr>
+
+								<td id = "mostCorrelatedWord3Correlation" class = "correlatedWordCorrelations">
+
+									<label>Correlation:</label>
+									<label class = "correlatedWordCorrelationValues">0.5</label>
+
+								</td>
+
+							</tr>
+							
+							<tr>
+
+								<td class = "correlationBarsCells">
+								
+									<progress id = "mostCorrelatedWord3CorrelationBar" class = "correlationBars" value = "0.5" max = "1"></progress>
+
+								</td>
+
+							</tr>
+
+							<tr>
+
+								<td id = "mostCorrelatedMap3">
+					
+									<ul id = "mostCorrelatedMap3States" class="stately">
+				
+										<script>
+
+											mostCorrelatedMap3States = document.getElementById("mostCorrelatedMap3States");
+											for (var i = 0; i < states.length; i++) {
+
+												mostCorrelatedMap3States.innerHTML += '<li data-state = "' + states[i].data_state 
+												+ '" id = "mostCorrelatedMap3' + states[i].id + '">' + states[i].value + "</li>";
+
+											}
+
+										</script>
+
+									</ul>
+					
+								</td>
+								
+							</tr>
+							
+						</table>
+						
+					</td>
+			
+				</tr>
+
+			</table>
+			
+			<table id = "leastCorrelatedWordClassesMaps">
+
+				<tr>
+				
+					<td>
+
+						<table class = "correlatedWordTables">
+
+							<tr>
+							
+								<td id = "leastCorrelatedWord1" class = "correlatedWords">
+								
+									FriendShip
+								
+								</td>
+								
+							</tr>
+							
+							<tr>
+								
+								<td id = "leastCorrelatedWord1Correlation" class = "correlatedWordCorrelations">
+								
+									<label>Correlation:</label>
+									<label class = "correlatedWordCorrelationValues">0.1</label>
+								
+								</td>
+								
+							</tr>
+							
+							<tr>
+								
+								<td class = "correlationBarsCells">
+								
+									<progress id = "leastCorrelatedWord1CorrelationBar" class = "correlationBars" value = "0.1" max = "1"></progress>
+								
+								</td>
+								
+							</tr>
+							
+							<tr>
+				
+								<td id = "leastCorrelatedMap1">
+					
+									<ul id = "leastCorrelatedMap1States" class="stately">
+				
+										<script>
+
+											leastCorrelatedMap1States = document.getElementById("leastCorrelatedMap1States");
+											for (var i = 0; i < states.length; i++) {
+
+												leastCorrelatedMap1States.innerHTML += '<li data-state = "' + states[i].data_state 
+												+ '" id = "leastCorrelatedMap1' + states[i].id + '">' + states[i].value + "</li>";
+
+											}
+
+										</script>
+
+									</ul>
+					
+								</td>
+								
+							</tr>
+							
+						</table>
+
+					</td>
+					
+					<td>
+					
+						<table class = "correlatedWordTables">
+
+							<tr>
+							
+								<td id = "leastCorrelatedWord2" class = "correlatedWords">
+								
+									Love
+								
+								</td>
+								
+							</tr>
+							
+							<tr>
+
+								<td id = "leastCorrelatedWord2Correlation" class = "correlatedWordCorrelations">
+								
+									<label>Correlation:</label>
+									<label class = "correlatedWordCorrelationValues">0.1</label>
+
+								</td>
+
+							</tr>
+							
+							<tr>
+
+								<td class = "correlationBarsCells">
+
+									<progress id = "leastCorrelatedWord2CorrelationBar" class = "correlationBars" value = "0.1" max = "1"></progress>
+								
+								</td>
+
+							</tr>
+							
+							<tr>
+					
+								<td id = "leastCorrelatedMap2">
+
+									<ul id = "leastCorrelatedMap2States" class="stately">
+				
+										<script>
+
+											leastCorrelatedMap2States = document.getElementById("leastCorrelatedMap2States");
+											for (var i = 0; i < states.length; i++) {
+
+												leastCorrelatedMap2States.innerHTML += '<li data-state = "' + states[i].data_state 
+												+ '" id = "leastCorrelatedMap2' + states[i].id + '">' + states[i].value + "</li>";
+
+											}
+
+										</script>
+
+									</ul>
+					
+								</td>
+								
+							</tr>
+							
+						</table>
+					
+					</td>
+
+					<td>
+					
+						<table class = "correlatedWordTables">
+
+							<tr>
+							
+								<td id = "leastCorrelatedWord3" class = "correlatedWords">
+								
+									Help
+								
+								</td>
+								
+							</tr>
+							
+							<tr>
+
+								<td id = "leastCorrelatedWord3Correlation" class = "correlatedWordCorrelations">
+								
+									<label>Correlation:</label>
+									<label class = "correlatedWordCorrelationValues">0.1</label>
+
+								</td>
+
+							</tr>
+							
+							<tr>
+
+								<td class = "correlationBarsCells">
+
+									<progress id = "leastCorrelatedWord3CorrelationBar" class = "correlationBars" value = "0.1" max = "1"></progress>
+
+								</td>
+
+							</tr>
+
+							<tr>
+
+								<td id = "leastCorrelatedMap3">
+					
+									<ul id = "leastCorrelatedMap3States" class="stately">
+				
+										<script>
+
+											leastCorrelatedMap3States = document.getElementById("leastCorrelatedMap3States");
+											for (var i = 0; i < states.length; i++) {
+
+												leastCorrelatedMap3States.innerHTML += '<li data-state = "' + states[i].data_state 
+												+ '" id = "leastCorrelatedMap3' + states[i].id + '">' + states[i].value + "</li>";
+
+											}
+
+										</script>
+
+									</ul>
+					
+								</td>
+								
+							</tr>
+							
+						</table>
+						
+					</td>
+			
+				</tr>
+
+			</table>
+
+		</div>
+		
+		<div id = "comparisonView">
+
+			<div id = "comparisonCorrelation">
+
+					<label>Correlation:</label>
+					<label id = "comparisonCorrelationValues">0.9</label>
+
+			</div>
+
+			<div id = "comparisonCorrelationBarsCell">
+
+					<progress id = "comparisonCorrelationBar" value = "0.9" max = "1"></progress>
+							
+			</div>
+			
+			<table id = "comparisonMaps">
+
+				<tr>
+						
+					<td id = "comparisonWord1" class = "comparisonWords">
+							
+						Family
+							
+					</td>
+					
+					<td id = "comparisonWord2" class = "comparisonWords">
+							
+						FriendShip
+							
+					</td>
+							
+				</tr>
+
+				<tr>
+
+					<td id = "comparisonMap1">
+				
+						<ul id = "comparisonMap1States" class="stately">
+			
+							<script>
+
+								comparisonMap1States = document.getElementById("comparisonMap1States");
+								for (var i = 0; i < states.length; i++) {
+
+									comparisonMap1States.innerHTML += '<li data-state = "' + states[i].data_state 
+									+ '" id = "comparisonMap1' + states[i].id + '">' + states[i].value + "</li>";
+
+								}
+
+							</script>
+
+						</ul>
+
+					</td>
+					
+					<td id = "comparisonMap2">
+				
+						<ul id = "comparisonMap2States" class="stately">
+			
+							<script>
+
+								comparisonMap2States = document.getElementById("comparisonMap2States");
+								for (var i = 0; i < states.length; i++) {
+
+									comparisonMap2States.innerHTML += '<li data-state = "' + states[i].data_state 
+									+ '" id = "comparisonMap2' + states[i].id + '">' + states[i].value + "</li>";
+
+								}
+
+							</script>
+
+						</ul>
+
+					</td>
+
+				</tr>
+
+			</table>
+
+		</div>
+
+	</div>
+
+	<div id="popup" class="overlay">
+
+		<div id = "popupWindow">
+
+			<div id = "popupHeader">Please choose a word class to compare</div>
+			
+			<div id = "popupWordSelectorWrapper">
+
+				<select id = "popupWordSelector">
+
+					<script>
+
+						popupWordSelectorOptions = document.getElementById("popupWordSelector");
+						for (var i = 0; i < words.length; i++) {
+
+							if (i == 0) {
+
+								popupWordSelectorOptions.innerHTML += '<OPTION class = "wordSelectorOptions" selected = "selected" value="' + words[i] + '">' + words[i];
+
+							} else {
+
+								popupWordSelectorOptions.innerHTML += '<OPTION class = "wordSelectorOptions" value="' + words[i] + '">' + words[i];
+
+							}
+						
+						}
+
+					</script>
+		
+				</select>
+	
+			</div>
+
+			<table id = "popupButtonsWrapper">
+
+				<tr>
+
+					<td class = "popupButtons" onclick = "selectWordToCompare();">
+					
+						<a 	class = "popupButtonLinks" href="#p" > Ok </a>
+					
+					</td>
+					
+					<td class = "popupBlankCellWrapper"></td>
+					
+					<td class = "popupButtons">
+					
+						<a 	class = "popupButtonLinks" href="#"> Cancel </a>
+
+					</td>
+				
+				</tr>
+
+			</table>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
